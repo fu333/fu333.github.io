@@ -1,2 +1,2 @@
-# blog
-fu333's blog
+# fu333's blog
+blog
