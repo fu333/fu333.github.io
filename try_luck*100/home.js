@@ -10,7 +10,12 @@ function change(){
 
     for(var i = 0;i < x;i++){
         var y = Math .random();
-        var z = invNormalDistStd(y);
+        y = (2+2/pi)*y;
+        var z;
+        if(y == 0) z = -Infinity;
+        else if(y <= 1/2) z = -1/(2*y);
+        else if(y < 5/2+2/pi) z = y-1-1/pi;
+        else z = 1/(2+4/pi-2*y);
         var w = Math.exp(-z*z/2);
         var l = 0;
         for(var j = 0;j < 7;j++){
