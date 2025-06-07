@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- You get true 大吉！ -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>おみくじ100連</title>
+        <link href="./home.css" rel="stylesheet">
+        <script class="data-set" id="data">
+            var a = new Array();
+            var b = new Array();
+            var c = new Array();
+            var d = new Array();
+            const pi = Math.PI;            
+            for(var i = 0;i < 15;i++){
+                a[i] = 0;
+                b[i] = 0;
+                c[i] = 0;
+                d[i] = 0;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div class="explanation">
+            <p>100万以下の自然数を下のテキストボックスに入れてね</p>
+        </div>
+        <div class="omikuji">
+            <p>おみくじ</p>
+            <input id="text" type="text" value="100">
+            <p>連する</p>
+        <input id="button" onclick="change()" type="button" value="実行">
+        </div>
+        <div class="result">
+            <p>おみくじを</p>
+            <p id="times">100</p>
+            <p>連した結果...</p>
+        </div>
+        <div class="omikuji-result" id="omikuji">
+            <div ><p>運勢</p></div>
+            <div><p>回数 (回)</p></div>
+            <div><p>割合 (%)</p></div>
+            <div><p>累積回数 (回)</p></div>
+            <div><p>累積割合 (%)</p></div>
+
+            <div><p>大大大大凶</p></div>
+            <div><p id="0">0</p></div>
+            <div><p id="x0">0</p></div>
+            <div><p id="y0">0</p></div>
+            <div><p id="z0">0</p></div>
+
+            <div><p>大大大凶</p></div>
+            <div><p id="1">0</p></div>
+            <div><p id="x1">0</p></div>
+            <div><p id="y1">0</p></div>
+            <div><p id="z1">0</p></div>
+
+            <div><p>大大凶</p></div>
+            <div><p id="2">0</p></div>
+            <div><p id="x2">0</p></div>
+            <div><p id="y2">0</p></div>
+            <div><p id="z2">0</p></div>
+
+            <div><p>大凶</p></div>
+            <div><p id="3">0</p></div>
+            <div><p id="x3">0</p></div>
+            <div><p id="y3">0</p></div>
+            <div><p id="z3">0</p></div>
+
+            <div><p>凶</p></div>
+            <div><p id="4">0</p></div>
+            <div><p id="x4">0</p></div>
+            <div><p id="y4">0</p></div>
+            <div><p id="z4">0</p></div>
+
+            <div><p>末吉</p></div>
+            <div><p id="5">0</p></div>
+            <div><p id="x5">0</p></div>
+            <div><p id="y5">0</p></div>
+            <div><p id="z5">0</p></div>
+
+            <div><p>小吉</p></div>
+            <div><p id="6">0</p></div>
+            <div><p id="x6">0</p></div>
+            <div><p id="y6">0</p></div>
+            <div><p id="z6">0</p></div>
+
+            <div><p>中吉</p></div>
+            <div><p id="7">0</p></div>
+            <div><p id="x7">0</p></div>
+            <div><p id="y7">0</p></div>
+            <div><p id="z7">0</p></div>
+
+            <div><p>大吉</p></div>
+            <div><p id="8">0</p></div>
+            <div><p id="x8">0</p></div>
+            <div><p id="y8">0</p></div>
+            <div><p id="z8">0</p></div>
+
+            <div><p>大大吉</p></div>
+            <div><p id="9">0</p></div>
+            <div><p id="x9">0</p></div>
+            <div><p id="y9">0</p></div>
+            <div><p id="z9">0</p></div>
+
+            <div><p>大大大吉</p></div>
+            <div><p id="10">0</p></div>
+            <div><p id="x10">0</p></div>
+            <div><p id="y10">0</p></div>
+            <div><p id="z10">0</p></div>
+
+            <div><p>大大大大吉</p></div>
+            <div><p id="11">0</p></div>
+            <div><p id="x11">0</p></div>
+            <div><p id="y11">0</p></div>
+            <div><p id="z11">0</p></div>
+
+            <div><p>大大大大大吉</p></div>
+            <div><p id="12">0</p></div>
+            <div><p id="x12">0</p></div>
+            <div><p id="y12">0</p></div>
+            <div><p id="z12">0</p></div>
+
+            <div><p>大大大大大大吉</p></div>
+            <div><p id="13">0</p></div>
+            <div><p id="x13">0</p></div>
+            <div><p id="y13">0</p></div>
+            <div><p id="z13">0</p></div>
+
+            <div><p>(計)</p></div>
+            <div><p id="14">0</p></div>
+            <div><p id="x14">0</p></div>
+            <div><p id="y14">0</p></div>
+            <div><p id="z14">0</p></div>
+        </div>
+        <div class="comment"><p>パソコン画面推奨です。スマホなら横画面で。<br><br>githubさんにとあるライブラリの読み込みを拒否されたのでqnorm関数が使えませんでした(泣)。したがっては、適当に確率を設定したので大大大大大吉、大大大大大大吉は出ません。しかも凶あたりの確率も意味不明です。そのうえ大大大大凶が9%くらいの確率で出ます。かわいそうに...。(23.10.19)</p></div>
+        <div class="twitter"><p>製作: @<a href="https://twitter.com/fu_33_o0">fu_33_o0</a></p></div>
+        <script src="./home.js"></script>
+    </body>
+</html>
