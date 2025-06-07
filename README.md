@@ -10,3 +10,6 @@
 <br>
 
 今後作っていく所存です...
+
+# License
+The source code is licensed MIT.
